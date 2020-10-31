@@ -1,0 +1,2 @@
+<span class="m-badge m-badge--{{ $options[$value]["state"] ?? '' }} m-badge--dot"></span>&nbsp;
+<span class="m--font-bold m--font-{{ $options[$value]["state"] ?? '' }}">{{$options[$value]['text'] ?? $value}}</span>
