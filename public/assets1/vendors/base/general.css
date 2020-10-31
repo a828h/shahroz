@@ -1,0 +1,147 @@
+        .m-badge {
+            white-space: nowrap;
+        }
+
+        .kt-pagination {
+            display: -webkit-box;
+            display: -ms-flexbox;
+            display: flex;
+            -webkit-box-align: center;
+            -ms-flex-align: center;
+            align-items: center;
+            -ms-flex-wrap: wrap;
+            flex-wrap: wrap;
+            -webkit-box-pack: justify;
+            -ms-flex-pack: justify;
+            justify-content: space-between;
+            margin: 0;
+            padding: 0;
+        }
+
+        .kt-pagination .kt-pagination__links {
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+        }
+
+        .kt-pagination .kt-pagination__links, .kt-pagination .kt-pagination__links li a {
+            display: -webkit-box;
+            display: -ms-flexbox;
+            display: flex;
+            -webkit-box-pack: center;
+            -ms-flex-pack: center;
+            justify-content: center;
+            -webkit-box-align: center;
+            -ms-flex-align: center;
+            align-items: center;
+        }
+
+        .kt-pagination.kt-pagination--brand .kt-pagination__links .kt-pagination__link--first, .kt-pagination.kt-pagination--brand .kt-pagination__links .kt-pagination__link--last, .kt-pagination.kt-pagination--brand .kt-pagination__links .kt-pagination__link--next, .kt-pagination.kt-pagination--brand .kt-pagination__links .kt-pagination__link--prev {
+            background: rgba(93, 120, 255, .1);
+        }
+
+        .kt-pagination .kt-pagination__links li {
+            display: -webkit-box;
+            display: -ms-flexbox;
+            display: flex;
+            -webkit-box-pack: center;
+            -ms-flex-pack: center;
+            justify-content: center;
+            -webkit-box-align: center;
+            -ms-flex-align: center;
+            align-items: center;
+            margin-right: .5rem;
+            border-radius: 4px;
+        }
+
+        .kt-pagination .kt-pagination__links li a {
+            font-weight: 500;
+            color: #74788d;
+            font-size: 1rem;
+            padding: 0 .2rem;
+            display: -webkit-box;
+            display: -ms-flexbox;
+            display: flex;
+            -ms-flex-wrap: wrap;
+            flex-wrap: wrap;
+            -webkit-box-pack: center;
+            -ms-flex-pack: center;
+            justify-content: center;
+            -webkit-box-align: center;
+            -ms-flex-align: center;
+            align-items: center;
+            min-width: 30px;
+            min-height: 30px;
+            margin: 0;
+        }
+
+        .kt-pagination .kt-pagination__links, .kt-pagination .kt-pagination__links li a {
+            display: -webkit-box;
+            display: -ms-flexbox;
+            display: flex;
+            -webkit-box-pack: center;
+            -ms-flex-pack: center;
+            justify-content: center;
+            -webkit-box-align: center;
+            -ms-flex-align: center;
+            align-items: center;
+        }
+
+        .kt-pagination.kt-pagination--brand .kt-pagination__links .kt-pagination__link--active {
+            background: #5d78ff;
+        }
+
+        .kt-pagination .kt-pagination__links .kt-pagination__link--active a {
+            color: #fff;
+        }
+
+        .kt-pagination .kt-pagination__toolbar {
+            margin: 0;
+            display: -webkit-box;
+            display: -ms-flexbox;
+            display: flex;
+            -webkit-box-align: center;
+            -ms-flex-align: center;
+            align-items: center;
+            padding: 0;
+        }
+
+        .kt-pagination.kt-pagination--brand .kt-pagination__toolbar .form-control {
+            background: rgba(93, 120, 255, .1);
+        }
+
+        .kt-pagination .kt-pagination__toolbar .form-control {
+            padding: 0;
+            margin-right: 10px;
+            height: 30px;
+            font-weight: 600;
+            font-size: 1.1rem;
+            font-weight: 500;
+            line-height: 1;
+            outline: 0;
+            border: none;
+        }
+
+        .kt-pagination .kt-pagination__toolbar .pagination__desc {
+            -webkit-box-flex: 1;
+            -ms-flex-positive: 1;
+            flex-grow: 1;
+            font-weight: 500;
+            color: #74788d;
+        }
+
+        .box-very-light {
+            background-color: #f6f6f6;
+        }
+
+        td {
+            white-space: nowrap;
+        }
+
+        .m-aside-menu .m-menu__nav>.m-menu__item.m-menu__item--active>.m-menu__link .m-menu__link-text {
+            color: #bf2d46 !important
+        }
+
+        .m-checkbox.m-checkbox--focus>span {
+            transform: rotate(90deg);
+        }
