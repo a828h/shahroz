@@ -206,7 +206,6 @@
                                 </div>
                             </td>
                             @endif
-
                         </tr>
                         @foreach($content->contentRows AS $contentRowsIndex => $row)
                         <tr style="display: none; background-color: #f7f7f7" class="detail-tr-{{$contentIndex}}">

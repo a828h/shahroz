@@ -46,7 +46,7 @@ class PagesController extends Controller
                 ->withCount('contentPublishers')
                 ->orderBy('id','desc')
                 ->get();
-            $campaigns = auth()->user()->campaigns()->statusIs('active')->limit(7)->get();
+            $campaigns = auth()->user()->campaigns()->statusIs('active')->limit(7)->orderBy('id', 'DESC')->get();
         } else {
             $instagramCampaignsData = $this->campaign
             ->where(function($query) {
@@ -66,7 +66,7 @@ class PagesController extends Controller
                 ->withCount('contentPublishers')
                 ->orderBy('id','desc')
                 ->get();
-            $campaigns = $this->campaign->statusIs('demo')->limit(7)->get();
+            $campaigns = $this->campaign->statusIs('demo')->limit(7)->orderBy('id', 'DESC')->get();
             $isDemo = true;
         }
         $instagramCampaigns = [

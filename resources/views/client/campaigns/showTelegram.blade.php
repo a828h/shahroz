@@ -2,7 +2,7 @@
 
 @section('content')
 @if(isset($isDemo) && $isDemo)
-@include('client.pages.demo')
+    @include('client.pages.demo')
 @endif
 <!--Begin::Row-->
 <div class="row" id="printJS-form">
@@ -146,7 +146,7 @@
                     <thead>
                         <tr class="text-left text-uppercase">
                             <th style="min-width: 250px" class="pl-7">
-                                <span class="text-dark-75">@lang('client.campaignPublisher.publishers')</span>
+                                <span class="text-dark-75">@lang('client.campaignPublisher.name')</span>
                             </th>
                             <th style="min-width: 100px">@lang('client.campaignPublisher.impersion_cnt')</th>
                             <th style="min-width: 80px"></th>
@@ -157,23 +157,26 @@
                         $chartSource = [];
                         $pdfData = [];
                         $publishers = [];
+                        $chartData = [
+                            'impersions' => [],
+                            'clicks' => []
+                        ];
                         @endphp
                         @if(count($campaign->contents))
                         @foreach ($campaign->contents as $contentIndex => $content)
                         @php
-                        $chartData['impersions'][] = $content->impersion_cnt;
+                            $chartData['impersions'][] = $content->impersion_cnt;
+                            $chartData['clicks'][] = $content->clicks_cnt;
                         @endphp
-                        @foreach($content->contentRows AS $contentRowsIndex => $row)
-                        <tr style="border-top: {{ $contentRowsIndex === 0 ? '1px solid #ccc' : '' }}">
-                            @if($contentRowsIndex === 0)
-                            <td rowspan="{{count($content->contentRows)}}" style="padding: 0;">
+                        <tr style="border-top:1px solid #ccc" class="main-tr-{{$contentIndex}}">
+                            <td rowspan="1" data-count="{{count($content->contentRows) + 1}}" style="padding: 0;">
                                 <div style="display: flex; justify-content: flex-start; flex-wrap: wrap; margin: 0;">
                                     @if(count($content->contentPublishers) === 1)
                                     @php
-                                    if(!isset($publishers[$contentIndex])) {
-                                    $publishers[$contentIndex] = [];
-                                    }
-                                    $publishers[$contentIndex][] = $contentPublisher->publisher->name
+                                        if(!isset($publishers[$contentIndex])) {
+                                            $publishers[$contentIndex] = [];
+                                        }
+                                        $publishers[$contentIndex][] = $content->contentPublishers[0]->publisher->name
                                     @endphp
                                     <div class="d-flex align-items-center">
                                         <div class="symbol symbol-50 symbol-light mr-4">
@@ -193,10 +196,10 @@
                                     @else
                                     @foreach ($content->contentPublishers as $contentPublisher)
                                     @php
-                                    if(!isset($publishers[$contentIndex])) {
-                                    $publishers[$contentIndex] = [];
-                                    }
-                                    $publishers[$contentIndex][] = $contentPublisher->publisher->name
+                                        if(!isset($publishers[$contentIndex])) {
+                                            $publishers[$contentIndex] = [];
+                                        }
+                                        $publishers[$contentIndex][] = $contentPublisher->publisher->name
                                     @endphp
                                     <div class="d-flex align-items-center"
                                         style="border: 1px solid #ccc; margin: 3px; padding: 3px 10px; border-radius: 5px; background-color: #efefef;">
@@ -215,16 +218,53 @@
 
                                     @endforeach
                                     @endif
+                                    @if(count($content->contentRows) > 1)
+                                        <button class="btn btn-primary btn-sm tr-toggle btn-expand m-3" data-index="{{$contentIndex}}">@lang('client.campaigns.withDetail')</button>
+                                    @endif
+                                </div>
+                            </td>
+                            <td>
+                                <span
+                                    class="text-dark-75 font-weight-bolder d-block font-size-lg">{{number_format($content->impersion_cnt)}}</span>
+                            </td>
+
+                            @if($content->media_type === 'content' )
+                            <td class="text-right" rowspan="1" class="content_media_file_td_{{$contentIndex}}">
+                                <div class="btn-group" role="group" aria-label="First group">
+                                    @if($campaign->resource_type === 'all' || $campaign->resource_type === 'content')
+                                    <button type="button" class="btn btn-warning btn-icon dynamic"
+                                        data-id="{{$content->id}}" data-type="content_resource"><i
+                                            class="fas fa-upload"></i></button>
+                                    @endif
+                                    <button type="button" class="btn btn-success btn-icon dynamic"
+                                        data-id="{{$content->id}}" data-type="content_media"><i
+                                            class="fas fa-photo-video"></i></button>
+                                </div>
+                            </td>
+                            @elseif($content->resource_type === 'content')
+                            <td class="text-right" rowspan="1" class="content_resource_file_td_{{$contentIndex}}">
+                                <div class="btn-group" role="group" aria-label="First group">
+                                    @if($campaign->resource_type === 'all' || $campaign->resource_type === 'content')
+                                    <button type="button" class="btn btn-warning btn-icon dynamic"
+                                        data-id="{{$content->id}}" data-type="content_resource"><i
+                                            class="fas fa-upload"></i></button>
+                                    @endif
+                                    <button type="button" class="btn btn-success btn-icon dynamic"
+                                        data-id="{{$content->id}}" data-type="content_media"><i
+                                            class="fas fa-photo-video"></i></button>
                                 </div>
                             </td>
                             @endif
+                        </tr>
+                        @foreach($content->contentRows AS $contentRowsIndex => $row)
+                        <tr style="display: none; background-color: #f7f7f7" class="detail-tr-{{$contentIndex}}">
                             <td>
                                 <span
                                     class="text-dark-75 font-weight-bolder d-block font-size-lg">{{number_format($row->impersion_cnt)}}</span>
                             </td>
 
-                            @if($content->content_type === 'normal' || $content->content_type === 'type1')
-                            <td class="pr-0 text-right" rowspan="1">
+                            @if($content->media_type === 'rows')
+                            <td class="text-right" rowspan="1">
                                 <div class="btn-group" role="group" aria-label="First group">
                                     @if($campaign->resource_type === 'all' || $campaign->resource_type === 'content')
                                     <button type="button" class="btn btn-warning btn-icon dynamic"
@@ -236,8 +276,8 @@
                                             class="fas fa-photo-video"></i></button>
                                 </div>
                             </td>
-                            @elseif($content->content_type === 'type2' && $contentRowsIndex === 0 )
-                            <td class="pr-0 text-right" rowspan="{{count($content->contentRows)}}">
+                            @elseif($content->resource_type === 'rows')
+                            <td class="text-right" rowspan="{{count($content->contentRows)}}">
                                 <div class="btn-group" role="group" aria-label="First group">
                                     @if($campaign->resource_type === 'all' || $campaign->resource_type === 'content')
                                     <button type="button" class="btn btn-warning btn-icon dynamic"

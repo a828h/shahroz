@@ -98,7 +98,7 @@ class CampaignController extends Controller
                 ->withRatioData($ratioData)
                 ->withBestContents($bestContents)
                 ->withPageTitle($campaign->name)
-                ->withIsDemo($this->user->campaigns()->count() === 0)
+                ->withIsDemo(auth()->user()->campaigns()->count() === 0)
                 ->withPageTitle(__('client.campaigns.campaign') . $campaign->name);
         } else {
             $customer_cost = 0;
@@ -127,7 +127,7 @@ class CampaignController extends Controller
                 ->withBudgetData($budgetData)
                 ->withRatioData($ratioData)
                 ->withBestPublishers($bestPublishers)
-                ->withIsDemo($this->user->campaigns()->count() === 0)
+                ->withIsDemo(auth()->user()->campaigns()->count() === 0)
                 ->withPageTitle(__('client.campaigns.campaign') . $campaign->name);
         }
     }
