@@ -11,10 +11,6 @@ return [
         'saveGeneral' => 'به روز رسانی اطلاعات',
         'upload' => 'آپلود فایل',
         'attach' => 'انتخاب فایل',
-        'search' => 'جستجو',
-        'search' => 'جستجو',
-        'search' => 'جستجو',
-        'search' => 'جستجو',
     ],
     'users' => [
         'list' => 'کاربران',
@@ -36,10 +32,9 @@ return [
         'enterPassword' => 'کلمه عبور را وارد کنید',
         'chooseRole' => 'نقش را انتخاب کنید',
         'chooseStatus' => 'وضعیت را انتخاب کنید',
+        'chooseUserType' => 'نوع را انتخاب کنید',
         'are_you_sure' => 'مطمئن هستید؟',
         'are_you_sure_to_delete' => 'مطمئن هستید می خواهید این کاربر حذف شود؟',
-        'list' => 'کاربران',
-        'list' => 'کاربران',
         'status' => 'وضعیت',
         'statuses' => [
             'all' => 'همه',
@@ -52,6 +47,13 @@ return [
             'super_admin' => 'سوپر ادمین',
             'admin' => 'ادمین',
             'member' => 'کاربر',
+        ],
+        'user_type' => 'نوع',
+        'user_types' => [
+            'normal' => 'عادی',
+            'hunter' => 'گیرنده کمپین',
+            'executor' => 'اجراکننده کمپین',
+            'hunter_executor' => 'هم گیرنده هم اجرا کننده کمپین',
         ],
         'messages' => [
             'created' => 'کاربر با موفقیت ایجاد شد',
@@ -174,7 +176,11 @@ return [
             'created' => 'کمپین با موفقیت ایجاد شد',
             'updated' => 'کمپین با موفقیت ویرایش شد',
             'deleted' => 'کمپین با موفقیت حذف شد'
-        ]
+        ],
+        'hunter_id' => "گیرنده کمپین",
+        'executor_id' => "اجراکننده کمپین",
+        'chooseHunterId' => "گیرنده کمپین رو انتخاب کنید",
+        'chooseExecutorId' => "اجراکننده کمپین رو انتخاب کنید",
     ],
     'publishers' => [
         'list' => 'ناشران',

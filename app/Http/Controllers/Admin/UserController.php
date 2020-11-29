@@ -9,6 +9,7 @@ use App\Http\Requests\admin\users\updateUserRequest;
 use App\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
+use Mpdf\Tag\Form;
 
 class UserController extends Controller
 {
@@ -65,6 +66,7 @@ class UserController extends Controller
             'role' => $data['role'],
             'status' => $data['status'],
             'password' => Hash::make($data['password']),
+            'user_type' => $data['user_type'],
         ]);
 
         return redirect()->route('admin.users.index')->withSuccess( __('admin.users.messages.created'));
@@ -112,6 +114,7 @@ class UserController extends Controller
             'role' => $data['role'] ?? $user->role,
             'status' => $data['status'] ?? $user->status,
             'password' => Hash::make($data['password']) ?? $user->password,
+            'user_type' => $data['user_type'] ?? $user->user_type
         ]);
 
         return redirect()->route('admin.users.index')->withSuccess(__('admin.users.messages.updated'));

@@ -15,4 +15,7 @@
         @include('components.form.radioGroup', ['scope' => 'admin.users', 'name' => 'role', 'options' => ['super_admin', 'admin', 'member']])
         @include('components.form.radioGroup', ['scope' => 'admin.users', 'name' => 'status', 'options' => ['active', 'inactive']])
     </div>
+    <div class="form-group row validated">
+        @include('components.form.radioGroup', ['scope' => 'admin.users', 'name' => 'user_type', 'options' => ['normal', 'hunter', 'executor','hunter_executor']])
+    </div>
 </div>

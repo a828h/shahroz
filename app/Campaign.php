@@ -17,7 +17,7 @@ class Campaign extends Model
      */
     protected $fillable = [
         'name', 'desc', 'platform', 'status', 'impersion_cnt', 'reach_cnt', 'clicks_cnt', 'like_cnt',
-        'share_cnt', 'save_cnt', 'sticker_tap_cnt', 'comment_cnt', 'cost', 'start_at', 'end_at', 'resource_type'
+        'share_cnt', 'save_cnt', 'sticker_tap_cnt', 'comment_cnt', 'cost', 'start_at', 'end_at', 'resource_type','executor_id','hunter_id'
     ];
 
     /**
