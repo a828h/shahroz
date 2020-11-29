@@ -90,8 +90,13 @@ class CampaignController extends Controller
         $users = $this->user->all()->pluck('fullName', 'id')->toArray();
         $publishers = $this->publisher->all()->pluck('name', 'id')->toArray();
         $last = DB::table('campaigns')->orderBy('id', 'DESC')->first();
+
+        $hunter = $this->user->where("user_type","hunter")->orWhere("user_type","hunter_executor")->get()->pluck("last_name",'id')->toArray();
+        $executor = $this->user->where("user_type","executor")->orWhere("user_type","hunter_executor")->get()->pluck("last_name",'id')->toArray();
         return view('admin.campaigns.create')
             ->withUsers($users)
+            ->withHunter($hunter)
+            ->withExecutor($executor)
             ->withPublishers($publishers)
             ->withCampaignId($last ? $last->id : 1)
             ->withCategories($this->category->all()->pluck('name', 'id')->toArray())
@@ -107,8 +112,13 @@ class CampaignController extends Controller
     {
         $users = $this->user->all()->pluck('fullName', 'id')->toArray();
         $publishers = $this->publisher->all()->pluck('name', 'id')->toArray();
+
+        $hunter = $this->user->where("user_type","hunter")->orWhere("user_type","hunter_executor")->get()->pluck("last_name",'id')->toArray();
+        $executor = $this->user->where("user_type","executor")->orWhere("user_type","hunter_executor")->get()->pluck("last_name",'id')->toArray();
         return view('admin.campaigns.createDrafts')
             ->withUsers($users)
+            ->withHunter($hunter)
+            ->withExecutor($executor)
             ->withPublishers($publishers)
             ->withCategories($this->category->all()->pluck('name', 'id')->toArray())
             ->withBrands($this->brand->all()->pluck('name', 'id')->toArray());
@@ -131,6 +141,8 @@ class CampaignController extends Controller
             'start_at' => $data['start_at'],
             'end_at' => $data['end_at'],
             'resource_type' => $data['resource_type'],
+            'hunter_id' => $data['hunter_id'] ,
+            'executor_id' => $data['executor_id'] ,
         ]);
         if (!empty($data['document_campaign_unique_id'])) {
             $this->document->where('temp_id', $data['document_campaign_unique_id'])->update([
@@ -283,6 +295,8 @@ class CampaignController extends Controller
             'start_at' => $data['start_at'],
             'end_at' => $data['end_at'],
             'resource_type' => $data['resource_type'],
+            'hunter_id' => $data['hunter_id'] ,
+            'executor_id' => $data['executor_id'] ,
         ]);
         $campaign->users()->attach($data['users'] ?? []);
         $campaign->categories()->attach($data['categories'] ?? []);
