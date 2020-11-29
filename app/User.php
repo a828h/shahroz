@@ -17,7 +17,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'first_name', 'last_name', 'mobile', 'brand', 'role', 'status', 'email', 'password',
+        'first_name', 'last_name', 'mobile', 'brand', 'role', 'status', 'email', 'password','user_type',
     ];
 
     /**
@@ -36,7 +36,7 @@ class User extends Authenticatable
      */
     protected $casts = [
         'email_verified_at' => 'datetime',
-    ]; 
+    ];
 
     public function campaigns() {
         return $this->belongsToMany(Campaign::class);
@@ -46,10 +46,10 @@ class User extends Authenticatable
         return $this->belongsToMany(Campaign::class);
     }
 
-    
+
     public function scopeSearch($query, $search)
     {
-        if(!$search) return $query; 
+        if(!$search) return $query;
         return $query->where(function($query) use ($search) {
             $query->where('first_name', 'like', "%$search%")
                   ->orWhere('last_name', "%$search%")
@@ -60,13 +60,13 @@ class User extends Authenticatable
 
     public function scopeStatusIs($query, $status)
     {
-        if(!$status) return $query; 
+        if(!$status) return $query;
         return $query->where('status', $status);
     }
 
     public function scopeRoleIs($query, $role)
     {
-        if(!$role) return $query; 
+        if(!$role) return $query;
         return $query->where('role', $role);
     }
 
