@@ -122,6 +122,8 @@ Route::middleware(['web', 'auth', 'admin'])->namespace('Admin')->name('admin.')-
         Route::get('dropzone/{type}/{id}', 'DropzoneController@index')->name('dropzone.index');
         Route::post('dropzone/upload/{type}/{id}', 'DropzoneController@upload')->name('dropzone.upload');
         Route::get('dropzone/delete', 'DropzoneController@delete')->name('dropzone.delete');
+
+        Route::get('stat', 'StatController@index')->name('stat.index');
     }
 );
 
