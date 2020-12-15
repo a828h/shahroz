@@ -333,9 +333,9 @@
                                 <!--begin::Title-->
                                 <div>
                                     <div class="font-size-h4 text-dark-75 font-weight-bolder">
-                                        {{$ratioData['impPerClick']}}%</div>
+                                        {{$ratioData['ClickPerImp']}}%</div>
                                     <div class="font-size-sm text-muted font-weight-bold mt-1">
-                                        @lang('client.campaigns.impPerClick')</div>
+                                        @lang('client.campaigns.ClickPerImp')</div>
                                 </div>
                                 <!--end::Title-->
                             </div>
@@ -371,9 +371,9 @@
                                 <!--begin::Title-->
                                 <div>
                                     <div class="font-size-h4 text-dark-75 font-weight-bolder">
-                                        {{$ratioData['impPerReach']}}%</div>
+                                        {{$ratioData['ReachPerImp']}}%</div>
                                     <div class="font-size-sm text-muted font-weight-bold mt-1">
-                                        @lang('client.campaigns.impPerReach')</div>
+                                        @lang('client.campaigns.ReachPerImp')</div>
                                 </div>
                                 <!--end::Title-->
                             </div>
@@ -409,9 +409,9 @@
                                 <!--begin::Title-->
                                 <div>
                                     <div class="font-size-h4 text-dark-75 font-weight-bolder">
-                                        {{$ratioData['impPerStickerTap']}}%</div>
+                                        {{$ratioData['StickerTapPerImp']}}%</div>
                                     <div class="font-size-sm text-muted font-weight-bold mt-1">
-                                        @lang('client.campaigns.impPerStickerTap')</div>
+                                        @lang('client.campaigns.StickerTapPerImp')</div>
                                 </div>
                                 <!--end::Title-->
                             </div>
@@ -445,9 +445,9 @@
                                 <!--begin::Title-->
                                 <div>
                                     <div class="font-size-h4 text-dark-75 font-weight-bolder">
-                                        {{$ratioData['impPerShare']}}%</div>
+                                        {{$ratioData['SharePerImp']}}%</div>
                                     <div class="font-size-sm text-muted font-weight-bold mt-1">
-                                        @lang('client.campaigns.impPerShare')</div>
+                                        @lang('client.campaigns.SharePerImp')</div>
                                 </div>
                                 <!--end::Title-->
                             </div>

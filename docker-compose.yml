@@ -58,7 +58,7 @@ services:
     networks:
       - app-network
     ports:
-      - "8080:80"
+      - "8001:80"
     environment:
       PMA_HOST: db
       UPLOAD_LIMIT: 1G

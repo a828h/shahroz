@@ -48,8 +48,8 @@ class Content extends Model
         return $this->morphMany(Document::class, 'documentable')->where('type','resource');
     }
 
-    public function campaignMedias()
+    public function contentMedias()
     {
-        return $this->morphMany(Document::class, 'documentable')->where('type','campaign_media');
+        return $this->morphMany(Document::class, 'documentable')->where('type','content_media');
     }
 }

@@ -64,14 +64,14 @@
                             <th style="min-width: 250px" class="pl-7">
                                 <span class="text-dark-75">@lang('client.campaignPublisher.name')</span>
                             </th>
-                            <th style="min-width: 100px">@lang('client.campaignPublisher.impersion_cnt')</th>
-                            <th style="min-width: 100px">@lang('client.campaignPublisher.reach_cnt')</th>
-                            <th style="min-width: 100px">@lang('client.campaignPublisher.clicks_cnt')</th>
-                            <th style="min-width: 100px">@lang('client.campaignPublisher.like_cnt')</th>
-                            <th style="min-width: 100px">@lang('client.campaignPublisher.share_cnt')</th>
-                            <th style="min-width: 100px">@lang('client.campaignPublisher.save_cnt')</th>
-                            <th style="min-width: 100px">@lang('client.campaignPublisher.sticker_tap_cnt')</th>
-                            <th style="min-width: 100px">@lang('client.campaignPublisher.comment_cnt')</th>
+                            <th style="min-width: 100px" data-toggle="tooltip" title="Impersion count">@lang('client.campaignPublisher.impersion_cnt')</th>
+                            <th style="min-width: 100px" data-toggle="tooltip" title="Reach count">@lang('client.campaignPublisher.reach_cnt')</th>
+                            <th style="min-width: 100px" data-toggle="tooltip" title="Click count">@lang('client.campaignPublisher.clicks_cnt')</th>
+                            <th style="min-width: 100px" data-toggle="tooltip" title="Like count">@lang('client.campaignPublisher.like_cnt')</th>
+                            <th style="min-width: 100px" data-toggle="tooltip" title="Share count">@lang('client.campaignPublisher.share_cnt')</th>
+                            <th style="min-width: 100px" data-toggle="tooltip" title="Save count">@lang('client.campaignPublisher.save_cnt')</th>
+                            <th style="min-width: 100px" data-toggle="tooltip" title="Sticker tap count">@lang('client.campaignPublisher.sticker_tap_cnt')</th>
+                            <th style="min-width: 100px" data-toggle="tooltip" title="Comment count">@lang('client.campaignPublisher.comment_cnt')</th>
                             <th style="min-width: 80px"></th>
                         </tr>
                     </thead>
@@ -112,8 +112,6 @@
                                         <div>
                                             <a href="#"
                                                 class="text-dark-75 font-weight-bolder text-hover-primary mb-1 font-size-lg">{{$content->contentPublishers[0]->publisher->name}}</a>
-                                            <span
-                                                class="text-muted font-weight-bold d-block">{{$content->contentPublishers[0]->publisher->link}}</span>
                                         </div>
                                     </div>
                                     @else
@@ -152,11 +150,11 @@
                             </td>
                             <td>
                                 <span
-                                    class="text-dark-75 font-weight-bolder d-block font-size-lg">{{number_format($content->reach_cnt)}}</span>
+                                    class="text-dark-75 font-weight-bolder d-block font-size-lg">{{number_format($content->clicks_cnt)}}</span>
                             </td>
                             <td>
                                 <span
-                                    class="text-dark-75 font-weight-bolder d-block font-size-lg">{{number_format($content->clicks_cnt)}}</span>
+                                    class="text-dark-75 font-weight-bolder d-block font-size-lg">{{number_format($content->reach_cnt)}}</span>
                             </td>
                             <td>
                                 <span
@@ -215,11 +213,11 @@
                             </td>
                             <td>
                                 <span
-                                    class="text-dark-75 font-weight-bolder d-block font-size-lg">{{number_format($row->reach_cnt)}}</span>
+                                    class="text-dark-75 font-weight-bolder d-block font-size-lg">{{number_format($row->clicks_cnt)}}</span>
                             </td>
                             <td>
                                 <span
-                                    class="text-dark-75 font-weight-bolder d-block font-size-lg">{{number_format($row->clicks_cnt)}}</span>
+                                    class="text-dark-75 font-weight-bolder d-block font-size-lg">{{number_format($row->reach_cnt)}}</span>
                             </td>
                             <td>
                                 <span
@@ -356,7 +354,7 @@
         }
 
         var options = {
-            series: ["{{$ratioData['impPerClick']}}", "{{$ratioData['impPerReach']}}", "{{$ratioData['impPerStickerTap']}}", "{{$ratioData['impPerShare']}}"],
+            series: ["{{$ratioData['ClickPerImp']}}", "{{$ratioData['ReachPerImp']}}", "{{$ratioData['StickerTapPerImp']}}", "{{$ratioData['SharePerImp']}}"],
             chart: {
                 height: height,
                 type: 'radialBar',
@@ -386,7 +384,7 @@
                             fontWeight: "bold",
                             formatter: function (w) {
                                 // By default this function returns the average of all series. The below is just an example to show the use of custom formatter function
-                                return "{{$ratioData['impPerClick']}}%";
+                                return "{{$ratioData['ClickPerImp']}}%";
                             }
                         }
                     },

@@ -4,7 +4,6 @@ namespace App\Http\Controllers\Client;
 
 use App\Document;
 use App\Http\Controllers\Controller;
-use Illuminate\Support\Facades\Storage;
 
 class DropzoneController extends Controller
 {
@@ -19,7 +18,7 @@ class DropzoneController extends Controller
                 $documents = Document::where('documentable_type', 'App\ContentRow')->where('documentable_id', $id)
                 ->where('type', $type)->get();
             } else if($type === 'content_resource' || $type === 'content_media'){
-                $documents = Document::where('documentable_type', 'App\Http\Controllers\Admin\Content')->where('documentable_id', $id)
+                $documents = Document::where('documentable_type', 'App\Content')->where('documentable_id', $id)
                 ->where('type', $type)->get();
             }
         } else {

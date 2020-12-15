@@ -203,7 +203,7 @@ $countCP = count($campaign->campiagnPublishers);
         }
 
         var options = {
-            series: ["{{$ratioData['impPerClick']}}", "{{$ratioData['impPerReach']}}", "{{$ratioData['impPerStickerTap']}}", "{{$ratioData['impPerShare']}}"],
+            series: ["{{$ratioData['ClickPerImp']}}", "{{$ratioData['ReachPerImp']}}", "{{$ratioData['StickerTapPerImp']}}", "{{$ratioData['SharePerImp']}}"],
             chart: {
                 height: height,
                 type: 'radialBar',
@@ -233,7 +233,7 @@ $countCP = count($campaign->campiagnPublishers);
                             fontWeight: "bold",
                             formatter: function (w) {
                                 // By default this function returns the average of all series. The below is just an example to show the use of custom formatter function
-                                return "{{$ratioData['impPerClick']}}%";
+                                return "{{$ratioData['ClickPerImp']}}%";
                             }
                         }
                     },
@@ -258,7 +258,7 @@ $countCP = count($campaign->campiagnPublishers);
         var chart = new ApexCharts(element, options);
         chart.render();
     }
-    
+
     $('#generate_pdf').on('click',function(e) {
         var doc = new jsPDF("p", "mm", "a4");
         var width = doc.internal.pageSize.getWidth();
@@ -291,17 +291,17 @@ $countCP = count($campaign->campiagnPublishers);
         };
         var res = doc.autoTableHtmlToJson(elem);
         doc.autoTable(res.columns, res.data, options);
-        
+
         doc.save('a4.pdf')
     });
 
     var data = @json($chartSource);
     var legends = {
-        imperssion: "{{__('client.campaignPublisher.imperssion')}}", 
+        imperssion: "{{__('client.campaignPublisher.imperssion')}}",
         reach: "{{__('client.campaignPublisher.reach')}}",
         click: "{{__('client.campaignPublisher.click')}}",
     };
-    
+
     // based on prepared DOM, initialize echarts instance
         var myChart = echarts.init(document.getElementById('main'));
 
@@ -373,7 +373,7 @@ $countCP = count($campaign->campiagnPublishers);
                             barBorderRadius: [4, 4, 0 ,0 ],
                             color: '#1BC5BD'
                         }
-                    }   
+                    }
                 },
                 {
                     type: 'bar',
@@ -386,7 +386,7 @@ $countCP = count($campaign->campiagnPublishers);
                             barBorderRadius: [4, 4, 0 ,0 ],
                             color: '#6993FF'
                         },
-                    }   
+                    }
                 },
                 {
                     type: 'bar',
@@ -399,11 +399,11 @@ $countCP = count($campaign->campiagnPublishers);
                             barBorderRadius: [4, 4, 0 ,0 ],
                             color: '#F64E60'
                         }
-                    }   
+                    }
                 },
             ]
         };
-        
+
 
         // use configuration item and data specified to show chart
         myChart.setOption(option);

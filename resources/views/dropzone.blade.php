@@ -13,7 +13,8 @@
                     <div class="dropzone-item" style="display:none">
                         <div class="dropzone-file">
                             <div class="dropzone-filename" title="some_image_file_name.jpg">
-                                <span data-dz-name="">some_image_file_name.jpg</span>
+                                <span style="position: relative" data-dz-name="">some_image_file_name.jpg</span>
+                                <img class="dropzone-img" data-dz-thumbnail />
                                 <strong>(
                                     <span data-dz-size="">340kb</span>)</strong>
                             </div>

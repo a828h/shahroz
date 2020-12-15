@@ -53,7 +53,7 @@ Route::get('storage/{filename}', function ($filename) {
 //             $document->update([
 //                 'type' => 'content_media',
 //                 'documentable_id' => $content->id,
-//                 'documentable_type' => 'App\Http\Controllers\Admin\Content',
+//                 'documentable_type' => 'App\Content',
 //             ]);
 //             $x++;
 //         }

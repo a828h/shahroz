@@ -148,7 +148,7 @@
                             <th style="min-width: 250px" class="pl-7">
                                 <span class="text-dark-75">@lang('client.campaignPublisher.name')</span>
                             </th>
-                            <th style="min-width: 100px">@lang('client.campaignPublisher.impersion_cnt')</th>
+                            <th data-toggle="tooltip" title="Impersion count" style="min-width: 100px">@lang('client.campaignPublisher.impersion_cnt')</th>
                             <th style="min-width: 80px"></th>
                         </tr>
                     </thead>
@@ -189,8 +189,6 @@
                                         <div>
                                             <a href="#"
                                                 class="text-dark-75 font-weight-bolder text-hover-primary mb-1 font-size-lg">{{$content->contentPublishers[0]->publisher->name}}</a>
-                                            <span
-                                                class="text-muted font-weight-bold d-block">{{$content->contentPublishers[0]->publisher->link}}</span>
                                         </div>
                                     </div>
                                     @else

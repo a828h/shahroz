@@ -29,3 +29,30 @@ if (!function_exists('convertToFa')) {
         return $englishNumbersOnly;
     }
 }
+
+ function getPath($document) {
+    switch($document->server) {
+        case 'local':
+            return asset($document->path);
+        case 'ftp':
+            return 'https://reports.ad-viceagency.com/?path=' . $document->path . '&hash='.sha1(md5('amir'.$document->path.'amir'));
+        default:
+            return strpos('http://',$document->path) ? $document->path : str_replace('http:/','http://',$document->path);
+
+    }
+}
+
+if (!function_exists('mediaDocuments')) {
+    function mediaDocuments($row)
+    {
+        $res = [];
+        $docs = $row->contentMedias;
+        if($docs && count($docs)) {
+            foreach($docs AS $doc) {
+                $res[] = getPath($doc);
+            }
+        }
+
+        return implode('$|$|$', $res);
+    }
+}

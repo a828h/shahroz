@@ -167,7 +167,7 @@ class CampaignPublisherInstagramImport implements ToCollection
                             'size' => 0,
                             'status' => 'temp',
                             'server' => 'bot',
-                            'documentable_type' => 'App\Http\Controllers\Admin\Content',
+                            'documentable_type' => 'App\Content',
                             'documentable_id' => $contentIns->id,
                         ]);
                     }

@@ -134,7 +134,7 @@ class CampaignController extends Controller
         ]);
         if (!empty($data['document_campaign_unique_id'])) {
             $this->document->where('temp_id', $data['document_campaign_unique_id'])->update([
-                'documentable_type' => Campaign::class,
+                'documentable_type' => 'App\Campaign',
                 'documentable_id' => $campaign->id,
                 'status' => 'attached',
             ]);
@@ -192,7 +192,7 @@ class CampaignController extends Controller
 
                 if (isset($cont['content_media_id']) && $cont['content_media_id'] !== 'noid') {
                     $this->document->where('temp_id', $cont['content_media_id'])->update([
-                        'documentable_type' => Content::class,
+                        'documentable_type' => 'App\Content',
                         'documentable_id' => $content->id,
                         'status' => 'attached',
                     ]);
@@ -200,7 +200,7 @@ class CampaignController extends Controller
 
                 if (isset($cont['content_resource_id']) && $cont['content_resource_id'] !== 'noid') {
                     $this->document->where('temp_id', $cont['content_resource_id'])->update([
-                        'documentable_type' => Content::class,
+                        'documentable_type' => 'App\Content',
                         'documentable_id' => $content->id,
                         'status' => 'attached',
                     ]);
@@ -231,7 +231,7 @@ class CampaignController extends Controller
 
                     if (isset($row['contentRow_media_id']) && $row['contentRow_media_id'] !== 'noid') {
                         $this->document->where('temp_id', $row['contentRow_media_id'])->update([
-                            'documentable_type' => ContentRow::class,
+                            'documentable_type' => 'App\ContentRow',
                             'documentable_id' => $contentRow->id,
                             'status' => 'attached',
                         ]);
@@ -239,7 +239,7 @@ class CampaignController extends Controller
 
                     if (isset($row['contentRow_resource_id']) && $row['contentRow_resource_id'] !== 'noid') {
                         $this->document->where('temp_id', $row['contentRow_resource_id'])->update([
-                            'documentable_type' => ContentRow::class,
+                            'documentable_type' => 'App\ContentRow',
                             'documentable_id' => $contentRow->id,
                             'status' => 'attached',
                         ]);
@@ -289,7 +289,7 @@ class CampaignController extends Controller
         $campaign->brands()->attach($data['brands'] ?? []);
         if (!empty($data['document_campaign_unique_id'])) {
             $this->document->where('temp_id', $data['document_campaign_unique_id'])->update([
-                'documentable_type' => Campaign::class,
+                'documentable_type' => 'App\Campaign',
                 'documentable_id' => $campaign->id,
                 'status' => 'attached',
             ]);
@@ -436,7 +436,7 @@ class CampaignController extends Controller
 
                 if (isset($cont['content_media_id']) && $cont['content_media_id'] !== 'noid') {
                     $this->document->where('temp_id', $cont['content_media_id'])->update([
-                        'documentable_type' => Content::class,
+                        'documentable_type' => 'App\Content',
                         'documentable_id' => $content->id,
                         'status' => 'attached',
                     ]);
@@ -444,7 +444,7 @@ class CampaignController extends Controller
 
                 if (isset($cont['content_resource_id']) && $cont['content_resource_id'] !== 'noid') {
                     $this->document->where('temp_id', $cont['content_resource_id'])->update([
-                        'documentable_type' => Content::class,
+                        'documentable_type' => 'App\Content',
                         'documentable_id' => $content->id,
                         'status' => 'attached',
                     ]);
@@ -492,7 +492,7 @@ class CampaignController extends Controller
 
                     if (isset($row['contentRow_media_id']) && $row['contentRow_media_id'] !== 'noid') {
                         $this->document->where('temp_id', $row['contentRow_media_id'])->update([
-                            'documentable_type' => ContentRow::class,
+                            'documentable_type' => 'App\ContentRow',
                             'documentable_id' => $contentRow->id,
                             'status' => 'attached',
                         ]);
@@ -500,7 +500,7 @@ class CampaignController extends Controller
 
                     if (isset($row['contentRow_resource_id']) && $row['contentRow_resource_id'] !== 'noid') {
                         $this->document->where('temp_id', $row['contentRow_resource_id'])->update([
-                            'documentable_type' => ContentRow::class,
+                            'documentable_type' => 'App\ContentRow',
                             'documentable_id' => $contentRow->id,
                             'status' => 'attached',
                         ]);

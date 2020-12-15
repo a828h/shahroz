@@ -26,7 +26,8 @@
                 </span>
                 <span
                     class="card-title font-weight-bolder text-dark-75 font-size-h2 mb-0 mt-6 d-block">{{number_format($campaign->impersion_cnt)}}</span>
-                <span class="font-weight-bold text-dark-50 font-size-sm">@lang('client.campaigns.imperssion_cnt')</span>
+                <span class="font-weight-bold text-dark-50 font-size-sm" data-toggle="tooltip"
+                    title="Impersion count">@lang('client.campaigns.imperssion_cnt')</span>
             </div>
             <!--end::Body-->
         </div>
@@ -51,7 +52,8 @@
                     <!--end::Svg Icon--></span>
                 <span
                     class="card-title font-weight-bolder text-dark-75 font-size-h2 mb-0 mt-6 d-block">{{number_format($campaign->clicks_cnt)}}</span>
-                <span class="font-weight-bold text-dark-50 font-size-sm">@lang('client.campaigns.clicks_cnt')</span>
+                <span class="font-weight-bold text-dark-50 font-size-sm" data-toggle="tooltip"
+                    title="Click count">@lang('client.campaigns.clicks_cnt')</span>
             </div>
             <!--end::Body-->
         </div>
@@ -81,7 +83,8 @@
                     <!--end::Svg Icon--></span>
                 <span
                     class="card-title font-weight-bolder text-dark-75 font-size-h2 mb-0 mt-6 d-block">{{number_format($campaign->reach_cnt)}}</span>
-                <span class="font-weight-bold text-dark-50 font-size-sm">@lang('client.campaigns.reach_cnt')</span>
+                <span class="font-weight-bold text-dark-50 font-size-sm" data-toggle="tooltip"
+                    title="Reach count">@lang('client.campaigns.reach_cnt')</span>
             </div>
             <!--end::Body-->
         </div>
@@ -109,7 +112,8 @@
                     <!--end::Svg Icon--></span>
                 <span
                     class="card-title font-weight-bolder text-dark-75 font-size-h2 mb-0 mt-6 d-block">{{number_format($campaign->share_cnt)}}</span>
-                <span class="font-weight-bold text-dark-50 font-size-sm">@lang('client.campaigns.share_cnt')</span>
+                <span class="font-weight-bold text-dark-50 font-size-sm" data-toggle="tooltip"
+                    title="Share count">@lang('client.campaigns.share_cnt')</span>
             </div>
             <!--end::Body-->
         </div>
@@ -140,7 +144,8 @@
                     <!--end::Svg Icon--></span>
                 <span
                     class="card-title font-weight-bolder text-dark-75 font-size-h2 mb-0 mt-6 d-block">{{number_format($budgetData['cost'])}}</span>
-                <span class="font-weight-bold text-dark-50 font-size-sm">@lang('client.campaigns.cost')</span>
+                <span class="font-weight-bold text-dark-50 font-size-sm" data-toggle="tooltip"
+                    title="Cost count">@lang('client.campaigns.cost')</span>
             </div>
             <!--end::Body-->
         </div>
@@ -166,7 +171,8 @@
                     <!--end::Svg Icon--></span>
                 <span
                     class="card-title font-weight-bolder text-white font-size-h2 mb-0 mt-6 d-block">{{number_format($budgetData['costPerImp'], 2)}}</span>
-                <span class="font-weight-bold text-white font-size-sm">@lang('client.campaigns.costPerImp')</span>
+                <span class="font-weight-bold text-white font-size-sm" data-toggle="tooltip"
+                    title="Cost per Impersion">@lang('client.campaigns.costPerImp')</span>
             </div>
             <!--end::Body-->
         </div>
@@ -192,7 +198,8 @@
                     <!--end::Svg Icon--></span>
                 <span
                     class="card-title font-weight-bolder text-white font-size-h2 mb-0 mt-6 d-block">{{number_format($budgetData['costPerClick'], 2)}}</span>
-                <span class="font-weight-bold text-white font-size-sm">@lang('client.campaigns.costPerClick')</span>
+                <span class="font-weight-bold text-white font-size-sm" data-toggle="tooltip"
+                    title="Cost per Click">@lang('client.campaigns.costPerClick')</span>
             </div>
             <!--end::Body-->
         </div>
@@ -218,7 +225,8 @@
                     <!--end::Svg Icon--></span>
                 <span
                     class="card-title font-weight-bolder text-white font-size-h2 mb-0 mt-6 d-block">{{number_format($budgetData['costPerReach'], 2)}}</span>
-                <span class="font-weight-bold text-white font-size-sm">@lang('client.campaigns.costPerReach')</span>
+                <span class="font-weight-bold text-white font-size-sm" data-toggle="tooltip"
+                    title="Cost per Reach">@lang('client.campaigns.costPerReach')</span>
             </div>
             <!--end::Body-->
         </div>
@@ -235,13 +243,14 @@
             <!--begin::Body-->
             <div class="card-body my-4">
                 <a href="#"
-                    class="card-title font-weight-bolder text-info font-size-h6 mb-4 text-hover-state-dark d-block">@lang('client.campaigns.impPerClick')</a>
+                    class="card-title font-weight-bolder text-info font-size-h6 mb-4 text-hover-state-dark d-block"
+                    data-toggle="tooltip" title="Click per Impersion">@lang('client.campaigns.ClickPerImp')</a>
                 <div class="font-weight-bold text-muted font-size-sm">
                     <span
-                        class="text-dark-75 font-weight-bolder font-size-h2 mr-2">{{$ratioData['impPerClick']}}%</span>
+                        class="text-dark-75 font-weight-bolder font-size-h2 mr-2">{{$ratioData['ClickPerImp']}}%</span>
                 </div>
                 <div class="progress progress-xs mt-7 bg-info-o-60">
-                    <div class="progress-bar bg-info" role="progressbar" style="width: {{$ratioData['impPerClick']}}%;"
+                    <div class="progress-bar bg-info" role="progressbar" style="width: {{$ratioData['ClickPerImp']}}%;"
                         aria-valuenow="50" aria-valuemin="0" aria-valuemax="100"></div>
                 </div>
             </div>
@@ -255,11 +264,12 @@
             <!--begin::Body-->
             <div class="card-body my-4">
                 <a href="#"
-                    class="card-title font-weight-bolder text-white font-size-h6 mb-4 text-hover-state-dark d-block">@lang('client.campaigns.impPerReach')</a>
+                    class="card-title font-weight-bolder text-white font-size-h6 mb-4 text-hover-state-dark d-block"
+                    data-toggle="tooltip" title="Reach pre Impersion">@lang('client.campaigns.ReachPerImp')</a>
                 <div class="font-weight-bold text-white font-size-sm">
-                    <span class="font-size-h2 mr-2">{{$ratioData['impPerReach']}}%</span></div>
+                    <span class="font-size-h2 mr-2">{{$ratioData['ReachPerImp']}}%</span></div>
                 <div class="progress progress-xs mt-7 bg-white-o-90">
-                    <div class="progress-bar bg-white" role="progressbar" style="width: {{$ratioData['impPerReach']}}%;"
+                    <div class="progress-bar bg-white" role="progressbar" style="width: {{$ratioData['ReachPerImp']}}%;"
                         aria-valuenow="50" aria-valuemin="0" aria-valuemax="100"></div>
                 </div>
             </div>
@@ -267,18 +277,21 @@
         </div>
         <!--end::Stats Widget 23-->
     </div>
+    @if($ratioData['StickerTapPerImp'] !== 0 || ($ratioData['SharePerImp'] === 0 || $ratioData['LikePerImp'] === 0 ))
     <div class="col-lg-4">
         <!--begin::Stats Widget 24-->
         <div class="card card-custom bg-dark card-stretch gutter-b">
             <!--begin::Body-->
             <div class="card-body my-4">
                 <a href="#"
-                    class="card-title font-weight-bolder text-white font-size-h6 mb-4 text-hover-state-dark d-block">@lang('client.campaigns.impPerStickerTap')</a>
+                    class="card-title font-weight-bolder text-white font-size-h6 mb-4 text-hover-state-dark d-block"
+                    data-toggle="tooltip"
+                    title="Sticker tap per Impersion">@lang('client.campaigns.StickerTapPerImp')</a>
                 <div class="font-weight-bold text-white font-size-sm">
-                    <span class="font-size-h2 mr-2">{{$ratioData['impPerStickerTap']}}%</span></div>
+                    <span class="font-size-h2 mr-2">{{$ratioData['StickerTapPerImp']}}%</span></div>
                 <div class="progress progress-xs mt-7 bg-white-o-90">
                     <div class="progress-bar bg-white" role="progressbar"
-                        style="width: {{$ratioData['impPerStickerTap']}}%;" aria-valuenow="50" aria-valuemin="0"
+                        style="width: {{$ratioData['StickerTapPerImp']}}%;" aria-valuenow="50" aria-valuemin="0"
                         aria-valuemax="100"></div>
                 </div>
             </div>
@@ -286,5 +299,50 @@
         </div>
         <!--end::Stats: Widget 24-->
     </div>
+    @elseif($ratioData['SharePerImp'] !== 0)
+    <div class="col-lg-4">
+        <!--begin::Stats Widget 24-->
+        <div class="card card-custom bg-dark card-stretch gutter-b">
+            <!--begin::Body-->
+            <div class="card-body my-4">
+                <a href="#"
+                    class="card-title font-weight-bolder text-white font-size-h6 mb-4 text-hover-state-dark d-block"
+                    data-toggle="tooltip"
+                    title="Sticker tap per Impersion">@lang('client.campaigns.SharePerImp')</a>
+                <div class="font-weight-bold text-white font-size-sm">
+                    <span class="font-size-h2 mr-2">{{$ratioData['SharePerImp']}}%</span></div>
+                <div class="progress progress-xs mt-7 bg-white-o-90">
+                    <div class="progress-bar bg-white" role="progressbar"
+                        style="width: {{$ratioData['SharePerImp']}}%;" aria-valuenow="50" aria-valuemin="0"
+                        aria-valuemax="100"></div>
+                </div>
+            </div>
+            <!--end::Body-->
+        </div>
+        <!--end::Stats: Widget 24-->
+    </div>
+    @else
+    <div class="col-lg-4">
+        <!--begin::Stats Widget 24-->
+        <div class="card card-custom bg-dark card-stretch gutter-b">
+            <!--begin::Body-->
+            <div class="card-body my-4">
+                <a href="#"
+                    class="card-title font-weight-bolder text-white font-size-h6 mb-4 text-hover-state-dark d-block"
+                    data-toggle="tooltip"
+                    title="Sticker tap per Impersion">@lang('client.campaigns.LikePerImp')</a>
+                <div class="font-weight-bold text-white font-size-sm">
+                    <span class="font-size-h2 mr-2">{{$ratioData['LikePerImp']}}%</span></div>
+                <div class="progress progress-xs mt-7 bg-white-o-90">
+                    <div class="progress-bar bg-white" role="progressbar"
+                        style="width: {{$ratioData['LikePerImp']}}%;" aria-valuenow="50" aria-valuemin="0"
+                        aria-valuemax="100"></div>
+                </div>
+            </div>
+            <!--end::Body-->
+        </div>
+        <!--end::Stats: Widget 24-->
+    </div>
+    @endif
 </div>
 <!--End::Row-->

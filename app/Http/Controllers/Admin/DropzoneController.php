@@ -18,23 +18,34 @@ class DropzoneController extends Controller
         ]);
     }
 
+    private function getPath($document) {
+        switch($document->server) {
+            case 'local':
+                return asset($document->path);
+            case 'ftp':
+                return 'https://reports.ad-viceagency.com/?path=' . $document->path . '&hash='.sha1(md5('amir'.$document->path.'amir'));
+            default:
+                return strpos('http://',$document->path) ? $document->path : str_replace('http:/','http://',$document->path);
+
+        }
+    }
+
     function upload(Request $request, string $type, string $id)
     {
         $image = $request->file('file');
         $ext = $image->extension();
         $mimType = $image->getMimeType();
         $size = $image->getSize();
-        $imageName = time() . '.' . $image->extension();
+        $imageName = md5($id . '-' .time()) . '.' . $image->extension();
         $image->move(public_path('images'), $imageName);
 
-        //$image->getSize()
         if(is_numeric($id)) {
             if($type === 'campaign'){
-                $documentableType = Campaign::class;
+                $documentableType = 'App\Campaign';
             } else if($type === 'contentRow_resource' || $type === 'contentRow_media') {
-                $documentableType = ContentRow::class;
+                $documentableType = 'App\ContentRow';
             }  else if($type === 'content_resource' || $type === 'content_media') {
-                $documentableType = Content::class;
+                $documentableType = 'App\Content';
             }
             Document::create([
                 'temp_id' => $id,
@@ -74,35 +85,24 @@ class DropzoneController extends Controller
         $response = [];
         if(is_numeric($id)) {
             if($type === 'campaign') {
-                $documents = Document::where('documentable_type', 'App\Campaign')->where('documentable_id', $id)->get();
+                $documents = Document::where('documentable_type', 'App\Campaign')
+                    ->where('documentable_id', $id)->get();
 
-                foreach($documents AS $document) {
-                    $response[] = [
-                        'name' => $document->name,
-                        'size' => $document->size,
-                        'path' => $document->server === 'local' ? asset($document->path) : $document->path
-                    ];
-                }
             } else if($type === 'contentRow_resource' || $type === 'contentRow_media'){
-                $documents = Document::where('documentable_type', 'App\ContentRow')->where('documentable_id', $id)
-                ->where('type', $type)->get();
-
-                foreach($documents AS $document) {
-                    $response[] = [
-                        'name' => $document->name,
-                        'size' => $document->size,
-                        'path' => $document->server === 'local' ? asset($document->path) : $document->path
-                    ];
-                }
+                $documents = Document::where('documentable_type', 'App\ContentRow')
+                    ->where('documentable_id', $id)
+                    ->where('type', $type)->get();
             }  else if($type === 'content_resource' || $type === 'content_media'){
-                $documents = Document::where('documentable_type', 'App\Http\Controllers\Admin\Content')->where('documentable_id', $id)
-                ->where('type', $type)->get();
-
+                $documents = Document::where('documentable_type', 'App\Content')
+                    ->where('documentable_id', $id)
+                    ->where('type', $type)->get();
+            }
+            if(count($documents)) {
                 foreach($documents AS $document) {
                     $response[] = [
                         'name' => $document->name,
                         'size' => $document->size,
-                        'path' => $document->server === 'local' ? asset($document->path) : $document->path
+                        'path' => $this->getPath($document)
                     ];
                 }
             }
@@ -112,7 +112,7 @@ class DropzoneController extends Controller
                 $response[] = [
                     'name' => $document->name,
                     'size' => $document->size,
-                    'path' => $document->server === 'local' ? asset($document->path) : $document->path
+                    'path' => $this->getPath($document)
                 ];
             }
         }

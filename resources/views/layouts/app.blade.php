@@ -86,6 +86,18 @@
         .hide-resource .uploadResource {
             display: none
         }
+
+        .table.table-vertical-center th, .table.table-vertical-center td {
+            text-align: center;
+        }
+
+        .dropzone-img {
+            height: 50px;
+        }
+        .dropzone-img:hover {
+            position: absolute;
+            transform: scale(15)
+        }
     </style>
 </head>
 <!--end::Head-->

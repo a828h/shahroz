@@ -6,6 +6,11 @@
         <h3>{{ __('auth.Reset Password') }}</h3>
         <div class="text-muted font-weight-bold">{{ __('auth.Enter your email to reset your password') }}</div>
     </div>
+    @if (session('status'))
+        <div class="alert alert-success my-3" role="alert">
+            {{ session('status') }}
+        </div>
+    @endif
     <form class="form" method="POST" action="{{ route('password.email') }}">
         @csrf
         <div class="input-group mb-10">

@@ -80,11 +80,11 @@ class CampaignController extends Controller
                 'costPerReach' => $campaign->reach_cnt == 0 ? 0 : $customer_cost / ($campaign->reach_cnt ? $campaign->reach_cnt : 1),
             ];
             $ratioData = [
-                'impPerClick' => round($campaign->clicks_cnt / ($campaign->impersion_cnt ? $campaign->impersion_cnt : 1), 3),
-                'impPerReach' => round($campaign->reach_cnt / ($campaign->impersion_cnt ? $campaign->impersion_cnt : 1), 3),
-                'impPerStickerTap' => round($campaign->sticker_tap_cnt / ($campaign->impersion_cnt ? $campaign->impersion_cnt : 1), 3),
-                'impPerShare' => round($campaign->sticker_tap_cnt / ($campaign->impersion_cnt ? $campaign->impersion_cnt : 1), 3),
-                'impPerLike' => round($campaign->sticker_tap_cnt / ($campaign->impersion_cnt ? $campaign->impersion_cnt : 1), 3),
+                'ClickPerImp' => round($campaign->clicks_cnt / ($campaign->impersion_cnt ? $campaign->impersion_cnt : 1), 3),
+                'ReachPerImp' => round($campaign->reach_cnt / ($campaign->impersion_cnt ? $campaign->impersion_cnt : 1), 3),
+                'StickerTapPerImp' => round($campaign->sticker_tap_cnt / ($campaign->impersion_cnt ? $campaign->impersion_cnt : 1), 3),
+                'SharePerImp' => round($campaign->sticker_tap_cnt / ($campaign->impersion_cnt ? $campaign->impersion_cnt : 1), 3),
+                'LikePerImp' => round($campaign->sticker_tap_cnt / ($campaign->impersion_cnt ? $campaign->impersion_cnt : 1), 3),
             ];
             $bestContents = [
                 'reach' => $campaign->contents()->orderBy('reach_cnt', 'desc')->limit(5)->get(),
@@ -110,11 +110,11 @@ class CampaignController extends Controller
                 'costPerImp' => $customer_cost / ($campaign->impersion_cnt ? $campaign->impersion_cnt : 1),
             ];
             $ratioData = [
-                'impPerClick' => round($campaign->clicks_cnt / ($campaign->impersion_cnt ? $campaign->impersion_cnt : 1), 3),
-                'impPerReach' => round($campaign->reach_cnt / ($campaign->impersion_cnt ? $campaign->impersion_cnt : 1), 3),
-                'impPerStickerTap' => round($campaign->sticker_tap_cnt / ($campaign->impersion_cnt ? $campaign->impersion_cnt : 1), 3),
-                'impPerShare' => round($campaign->sticker_tap_cnt / ($campaign->impersion_cnt ? $campaign->impersion_cnt : 1), 3),
-                'impPerLike' => round($campaign->sticker_tap_cnt / ($campaign->impersion_cnt ? $campaign->impersion_cnt : 1), 3),
+                'ClickPerImp' => round($campaign->clicks_cnt / ($campaign->impersion_cnt ? $campaign->impersion_cnt : 1), 3),
+                'ReachPerImp' => round($campaign->reach_cnt / ($campaign->impersion_cnt ? $campaign->impersion_cnt : 1), 3),
+                'StickerTapPerImp' => round($campaign->sticker_tap_cnt / ($campaign->impersion_cnt ? $campaign->impersion_cnt : 1), 3),
+                'SharePerImp' => round($campaign->sticker_tap_cnt / ($campaign->impersion_cnt ? $campaign->impersion_cnt : 1), 3),
+                'LikePerImp' => round($campaign->sticker_tap_cnt / ($campaign->impersion_cnt ? $campaign->impersion_cnt : 1), 3),
             ];
             $bestPublishers = [
                 'reach' => $campaign->contents()->orderBy('reach_cnt', 'desc')->with('contentPublishers')->limit(5)->get(),
