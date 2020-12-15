@@ -51,7 +51,7 @@
 @section('content')
 <div class="card card-custom gutter-t">
     <!--begin::Form-->
-    <form class="form">
+{{--    <form class="form">--}}
         {!! Form::model($data, ['class' => 'form', 'method' => 'get', 'id'=> 'search_form']) !!}
         <div class="card-body">
             <div class="form-group row">

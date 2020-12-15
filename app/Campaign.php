@@ -73,6 +73,11 @@ class Campaign extends Model
         );
     }
 
+    public function hunter(){
+        return $this->belongsTo(User::class,"hunter_id");
+    }
+
+
     public function scopeSearch($query, $search)
     {
         if(!$search) return $query;

@@ -20,6 +20,7 @@ return [
         'title' => 'داشبورد',
         'telegram_campaigns' => 'اطلاعات کمپین های تلگرام',
         'instagram_campaigns' => 'اطلاعات کمپین های اینستاگرام',
+        'campaigns' => 'اطلاعات کمپین های',
         'campaign_cnt' => 'تعداد کمپین ها',
         'imp_cnt' => 'تعداد بازدید',
         'reach_cnt' => 'تعداد کاربر درگیر شده',
@@ -156,6 +157,9 @@ return [
         'showCampaignResource' => 'مشاهده محتوای کمپین',
         'showCampaignResourceText' => 'برای مشاهده محتوای کمپین دکه مشاهده را بزنید',
         'view' => 'مشاهده',
+        'customer_cost' => 'هزینه مشتری',
+        'our_cost' => 'هزینه خودمون',
+        'income' => 'سود',
         'statuses' => [
             'all' => 'همه',
             'active' => 'فعال',
