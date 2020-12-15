@@ -6,6 +6,14 @@
         "multiple data-actions-box"=>"true"]])
     </div>
     <div class="form-group row validated">
+        @include('components.form.select', ['scope' => 'admin.campaigns', 'name' => 'hunter_id',
+        'staticOptions' =>
+        $hunter, 'extra' => ['data-live-search'=>"true"]])
+        @include('components.form.select', ['scope' => 'admin.campaigns', 'name' => 'executor_id',
+        'staticOptions' =>
+        $executor, 'extra' => ['data-live-search'=>"true"]])
+    </div>
+    <div class="form-group row validated">
         @include('components.form.select', ['scope' => 'admin.campaigns', 'name' => 'categories[]', 'staticOptions' =>
         $categories, 'extra' => ['data-live-search'=>"true", 'multiple' => 'true', "data-selected-text-format"=>"count >
         3",
