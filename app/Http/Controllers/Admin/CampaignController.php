@@ -11,6 +11,7 @@ use App\Document;
 use App\Http\Requests\admin\campaigns\storeCampaignRequest;
 use App\Http\Requests\admin\campaigns\storeDraftRequest;
 use App\Http\Requests\admin\campaigns\updateCampaignRequest;
+use App\Http\Requests\admin\campaigns\updateContentRequest;
 use App\Imports\CampaignPublisherInstagramImport;
 use App\Imports\CampaignPublisherTelegramImport;
 use App\Publisher;
@@ -397,7 +398,7 @@ class CampaignController extends Controller
         return redirect()->route('admin.campaigns.edit', $campaign->id)->withSuccess(__('admin.campaigns.messages.updated'));
     }
 
-    public function updateContents(Request $request, Campaign $campaign, string $tab = null)
+    public function updateContents(updateContentRequest $request, Campaign $campaign, string $tab = null)
     {
         $data = $request->all();
         $contents = $campaign->contents;
@@ -422,7 +423,7 @@ class CampaignController extends Controller
                     "save_cnt" => 0,
                     "sticker_tap_cnt" => 0,
                     "comment_cnt" => 0,
-                    "type" => $cont['type'],
+                    "type" => $cont['type'] ?? 'impression',
                     "our_cost" => $cont['our_cost'],
                     "customer_cost" => $cont['customer_cost'],
                     "dealer_cost" => $cont['customer_cost'],

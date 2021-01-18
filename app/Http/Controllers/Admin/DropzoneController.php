@@ -122,6 +122,8 @@ class DropzoneController extends Controller
     function delete(Request $request)
     {
         if ($request->get('name')) {
+            $document = Document::where('name', $request->get('name'))->orderBy('id', 'desc')->first();
+            $document->delete();
             \File::delete(public_path('images/' . $request->get('name')));
         }
     }

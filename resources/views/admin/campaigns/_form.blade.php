@@ -318,12 +318,12 @@
                             @lang('admin.campaigns.removeContent')
                         </button>
                         <button type="button" class="btn btn-warning btn-icon btn-sm mx-2 media_upload_related_btn d-none"
-                            onclick="openDropZoneModal(this)" data-type="contentRow_media" data-id="noid">
+                            onclick="openDropZoneModal(this)" data-type="content_media" data-id="noid">
                             <i class="fas fa-photo-video"></i>
                         </button>
                         <input type="hidden" class="media_upload_related d-none" name="content_media_id" value="noid">
                         <button type="button" class="btn btn-primary btn-icon btn-sm mx-2 resource_upload_related_btn d-none"
-                            onclick="openDropZoneModal(this)" data-type="contentRow_resource" data-id="noid">
+                            onclick="openDropZoneModal(this)" data-type="content_resource" data-id="noid">
                             <i class="fas fa-upload"></i>
                         </button>
                         <input type="hidden" class="resource_upload_related d-none" name="content_resource_id" value="noid">

@@ -45,7 +45,7 @@ class Content extends Model
 
     public function resource()
     {
-        return $this->morphMany(Document::class, 'documentable')->where('type','resource');
+        return $this->morphMany(Document::class, 'documentable')->where('type','content_resource');
     }
 
     public function contentMedias()

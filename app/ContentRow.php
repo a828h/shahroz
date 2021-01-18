@@ -25,11 +25,11 @@ class ContentRow extends Model
 
     public function resource()
     {
-        return $this->morphMany(Document::class, 'documentable')->where('type','resource');
+        return $this->morphMany(Document::class, 'documentable')->where('type','contentRow_resource');
     }
 
     public function contentMedias()
     {
-        return $this->morphMany(Document::class, 'documentable')->where('type','content_media');
+        return $this->morphMany(Document::class, 'documentable')->where('type','contentRow_media');
     }
 }

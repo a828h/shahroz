@@ -93,10 +93,11 @@
 
         .dropzone-img {
             height: 50px;
+            max-width: 30px;
         }
         .dropzone-img:hover {
             position: absolute;
-            transform: scale(15)
+            transform: scale(10);
         }
     </style>
 </head>
@@ -217,13 +218,13 @@
             var id = $(thisObj).attr('data-id');
             console.log(thisObj);
             if(id === 'noid') {
-                id = makeid(10);
+                id = makeid(30);
+                id = new Date().getTime() + id;
                 $(thisObj).next('input[type=hidden]').val(id);
                 $(thisObj).attr('data-id', id);
             }
             var url = "{{route('admin.dropzone.index',['type'=>'__type__', 'id'=>'__id__'])}}";
             url = url.replace('__type__', type).replace('__id__', id);
-            console.log(url);
             $.ajax({
                 url: url,
                 type: 'get',

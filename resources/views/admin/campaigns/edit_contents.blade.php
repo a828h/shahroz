@@ -18,8 +18,8 @@
                     <div data-repeater-list="contents">
                         @if(old('contents') && count(old('contents')) > 0)
                         @foreach (old('contents') as $index => $item)
-                        <div data-repeater-item="{{$index}}" data-repeater-index="{{$index}}" class="rounded rounded-top-0 m-4 p-3"
-                            style="border: 1px solid #c0c0c0">
+                        <div data-repeater-item="{{$index}}" data-repeater-index="{{$index}}"
+                            class="rounded rounded-top-0 m-4 p-3" style="border: 1px solid #c0c0c0">
                             <div class="form-group row validated" style="margin-bottom: 5px">
                                 @include('components.form.select', [
                                 'label' => 'admin.campaigns.publishers',
@@ -255,8 +255,8 @@
                         @endforeach
                         @elseif(count($campaign->contents))
                         @foreach ($campaign->contents as $index => $item)
-                        <div data-repeater-item="{{$index}}" data-repeater-index="{{$index}}" class="rounded rounded-top-0 m-4 p-3"
-                            style="border: 1px solid #c0c0c0">
+                        <div data-repeater-item="{{$index}}" data-repeater-index="{{$index}}"
+                            class="rounded rounded-top-0 m-4 p-3" style="border: 1px solid #c0c0c0">
                             <div class="form-group row validated" style="margin-bottom: 5px">
                                 @include('components.form.select', [
                                 'label' => 'admin.campaigns.publishers',
@@ -455,21 +455,25 @@
                                                 ])
                                             </td>
                                             <td class="uploadMedia">
-                                                <button type="button" class="btn btn-warning btn-icon btn-sm contentRow_media_upload_related_btn"
+                                                <button type="button"
+                                                    class="btn btn-warning btn-icon btn-sm contentRow_media_upload_related_btn"
                                                     onclick="openDropZoneModal(this)" data-type="contentRow_media"
                                                     data-id="{{$row->id ?? 'noid'}}">
                                                     <i class="fas fa-photo-video"></i>
                                                 </button>
-                                                <input type="hidden" name="contentRow_media_id" class="contentRow_media_upload_related"
+                                                <input type="hidden" name="contentRow_media_id"
+                                                    class="contentRow_media_upload_related"
                                                     value="{{$row->id ?? 'noid'}}">
                                             </td>
                                             <td class="uploadResource">
-                                                <button type="button" class="btn btn-primary btn-icon btn-sm contentRow_resource_upload_related_btn"
+                                                <button type="button"
+                                                    class="btn btn-primary btn-icon btn-sm contentRow_resource_upload_related_btn"
                                                     onclick="openDropZoneModal(this)" data-type="contentRow_resource"
                                                     data-id="{{$row->id ?? 'noid'}}">
                                                     <i class="fas fa-upload"></i>
                                                 </button>
-                                                <input type="hidden" name="contentRow_resource_id" class="contentRow_resource_upload_related"
+                                                <input type="hidden" name="contentRow_resource_id"
+                                                    class="contentRow_resource_upload_related"
                                                     value="{{$row->id ?? 'noid'}}">
                                             </td>
                                             <td>
@@ -755,7 +759,19 @@
                 // (Required)
                 // Specify the jQuery selector for this nested repeater
                 selector: '.inner-repeater',
-                isFirstItemUndeletable: true
+                isFirstItemUndeletable: true,
+                show: function () {
+                    $(this).find('.media_upload_related').val('noid')
+                    $(this).find('.media_upload_related_btn').attr('data-id','noid')
+                    $(this).find('.contentRow_media_upload_related').val('noid')
+                    $(this).find('.contentRow_media_upload_related_btn').attr('data-id','noid')
+
+                    $(this).find('.resource_upload_related').val('noid')
+                    $(this).find('.resource_upload_related_btn').attr('data-id','noid')
+                    $(this).find('.contentRow_resource_upload_related').val('noid')
+                    $(this).find('.contentRow_resource_upload_related_btn').attr('data-id','noid')
+                    $(this).slideDown();
+                },
             }],
             isFirstItemUndeletable: true,
         });

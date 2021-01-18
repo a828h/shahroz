@@ -34,7 +34,7 @@
                     </div>
                 </div>
             </div>
-            <span class="form-text text-muted">Max file size is 1MB and max number of files is 5.</span>
+            <span class="form-text text-muted">حداکثر حجم آپلود فایل  ۲۰ مگابایت است</span>
         </div>
     </div>
 </div>
@@ -52,7 +52,7 @@
          var myDropzone5 = new Dropzone(id, { // Make the whole body a dropzone
             url: "{{ route('admin.dropzone.upload', [$type, $id]) }}",
             parallelUploads: 1,
-            maxFilesize: 3, // Max filesize in MB
+            maxFilesize: 20, // Max filesize in MB
             previewTemplate: previewTemplate,
             //addRemoveLinks: true,
             acceptedFiles : ".mp4,.mkv,.avi, .jpeg, .jpg, .png, .gif",
